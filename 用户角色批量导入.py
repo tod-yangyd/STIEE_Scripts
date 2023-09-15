@@ -9,7 +9,7 @@ headers = {
 }
 
 conn_pi = pymysql.connect(host="192.168.0.236", user='dba', passwd='#', database='stiee_basic', port=3306,
-                          use_unicode=True, charset="utf8", cursorclass=pymysql.cursors.DictCursor )
+                          use_unicode=True, charset="utf8" )
 
 conn_pitest = pymysql.connect(host="101.43.47.152", user='dba', passwd='#', database='stiee_basic', port=60568,
                               use_unicode=True, charset="utf8")
@@ -27,7 +27,7 @@ def get_roleid(role_list):
             result_df = pd.read_sql(sql=sql, con=conn_pi)
             if len(result_df[0][0]) ==0:
                 dict = {"id":int(result_df[0][0]),"role_name":role_name}
-                roleid_dict.append(dict)
+                roleid_list.append(dict)
             else:
                 print("角色： %s 不存在"%role_name)
         except:
@@ -35,7 +35,7 @@ def get_roleid(role_list):
     return  roleid_list
 
 def get_roleinfo(roleid_list):
-
+    return  0
 
 
 
@@ -52,4 +52,4 @@ if __name__ == '__main__':
 
 
     conn_pi.close()
-    conn_pitest
+    conn_pitest.close()
